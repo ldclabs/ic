@@ -68,7 +68,7 @@ const MAX_INSTRUCTIONS_FOR_MESSAGE_ACCEPTANCE_CALLS: NumInstructions =
 /// The maximum depth of call graphs allowed for composite query calls
 pub(crate) const MAX_QUERY_CALL_DEPTH: usize = 6;
 /// Equivalent to MAX_INSTRUCTIONS_PER_MESSAGE_WITHOUT_DTS for now
-pub(crate) const MAX_INSTRUCTIONS_PER_COMPOSITE_QUERY_CALL: u64 = 5_000_000_000;
+pub(crate) const MAX_INSTRUCTIONS_PER_COMPOSITE_QUERY_CALL: u64 = 5000_000_000_000;
 /// The maximum time in seconds a query call is allowed to run.
 pub(crate) const MAX_TIME_PER_COMPOSITE_QUERY_CALL: Duration = Duration::from_secs(10);
 

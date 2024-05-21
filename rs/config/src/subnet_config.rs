@@ -15,13 +15,13 @@ const T: u128 = 1_000_000_000_000;
 
 // The limit on the number of instructions a message is allowed to executed.
 // Going above the limit results in an `InstructionLimitExceeded` error.
-pub(crate) const MAX_INSTRUCTIONS_PER_MESSAGE: NumInstructions = NumInstructions::new(40 * B);
+pub(crate) const MAX_INSTRUCTIONS_PER_MESSAGE: NumInstructions = NumInstructions::new(10000 * B);
 
 // The limit on the number of instructions a message is allowed to execute
 // without deterministic time slicing.
 // Going above the limit results in an `InstructionLimitExceeded` error.
 pub(crate) const MAX_INSTRUCTIONS_PER_MESSAGE_WITHOUT_DTS: NumInstructions =
-    NumInstructions::new(5 * B);
+    NumInstructions::new(5000 * B);
 
 // The limit on the number of instructions a slice is allowed to executed.
 // If deterministic time slicing is enabled, then going above this limit
@@ -30,7 +30,7 @@ pub(crate) const MAX_INSTRUCTIONS_PER_MESSAGE_WITHOUT_DTS: NumInstructions =
 // `MAX_INSTRUCTIONS_PER_MESSAGE` is used for execution of the single slice.
 // We assume 1 cycles unit ≅ 1 CPU cycle, so on a 2 GHz CPU one slice has
 // approximately 1 second to be processed.
-const MAX_INSTRUCTIONS_PER_SLICE: NumInstructions = NumInstructions::new(2 * B);
+const MAX_INSTRUCTIONS_PER_SLICE: NumInstructions = NumInstructions::new(5000 * B);
 
 // We assume 1 cycles unit ≅ 1 CPU cycle, so on a 2 GHz CPU it takes about 1ms
 // to enter and exit the Wasm engine.
@@ -55,7 +55,7 @@ const INSTRUCTION_OVERHEAD_PER_CANISTER_FOR_FINALIZATION: NumInstructions =
 // `message_limit + 2B * (1 / finalization_rate)` which ensures that
 // 1) execution does not slow down finalization.
 // 2) execution does not waste the time available per round.
-const MAX_INSTRUCTIONS_PER_ROUND: NumInstructions = NumInstructions::new(7 * B);
+const MAX_INSTRUCTIONS_PER_ROUND: NumInstructions = NumInstructions::new(20000 * B);
 
 // Limit per `install_code` message. It's bigger than the limit for a regular
 // update call to allow for canisters with bigger state to be upgraded.
@@ -89,7 +89,7 @@ const SYSTEM_SUBNET_FACTOR: u64 = 10;
 const MAX_HEAP_DELTA_PER_ITERATION: NumBytes = NumBytes::new(200 * M);
 
 // Log all messages that took more than this value to execute.
-pub const MAX_MESSAGE_DURATION_BEFORE_WARN_IN_SECONDS: f64 = 5.0;
+pub const MAX_MESSAGE_DURATION_BEFORE_WARN_IN_SECONDS: f64 = 60.0;
 
 // The gen 1 production machines should have 64 cores.
 // We could in theory use 32 threads, leaving other threads for query handling,
